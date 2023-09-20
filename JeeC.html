@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEE Countdowns</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0; /* Set the background color */
+        }
+        .countdown-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+            background-color: #fff; /* Set the background color for countdown containers */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for containers */
+        }
+        .countdown {
+            font-size: 24px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JEE Countdowns</h1>
+
+    <!-- Countdown for JEE (M) 2025 -->
+    <div class="countdown-container">
+        <h2>JEE (M) 2025</h2>
+        <div class="countdown" id="countdown-jee-m"></div>
+    </div>
+
+    <!-- Countdown for JEE (Adv) 2025 -->
+    <div class="countdown-container">
+        <h2>JEE (Adv) 2025</h2>
+        <div class="countdown" id="countdown-jee-adv"></div>
+    </div>
+
+    <script>
+        // Function to update the countdown
+        function updateCountdown(targetDate, elementId) {
+            const currentDate = new Date();
+            const timeRemaining = targetDate - currentDate;
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            document.getElementById(elementId).innerHTML = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+        }
+
+        // Set the target date for JEE (M) 2025 and JEE (Adv) 2025
+        const targetDateJEE_M = new Date('2025-01-01T00:00:00');
+        const targetDateJEE_Adv = new Date('2025-01-01T00:00:00');
+
+        // Update the countdowns every second
+        setInterval(() => {
+            updateCountdown(targetDateJEE_M, 'countdown-jee-m');
+            updateCountdown(targetDateJEE_Adv, 'countdown-jee-adv');
+        }, 1000);
+
+        // Initial update
+        updateCountdown(targetDateJEE_M, 'countdown-jee-m');
+        updateCountdown(targetDateJEE_Adv, 'countdown-jee-adv');
+    </script>
+</body>
+</html>
